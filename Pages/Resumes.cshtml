@@ -55,6 +55,11 @@
                             ? string.Join(", ", student.Technologies) : "Не указаны")
                         </p>
                     </div>
+                    <a class="resume-dettails-button"
+                        asp-page="/Resume"
+                        asp-route-id="@student.Id">
+                        Подробнее
+                    </a>
                 </article>
             }
         </div>

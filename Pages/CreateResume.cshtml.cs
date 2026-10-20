@@ -33,15 +33,6 @@ public class CreateResumeModel : PageModel
             ? string.Join(", ", Technologies)
             : "Не выбраны";
 
-        // string message = $"Анкета студента\n\n" +
-        //         $"Имя: {Name}\n" + 
-        //         $"Телефон: {Phone}\n" +
-        //         $"Email: {Email}\n" +
-        //         $"Специальность: {Speciality}\n" +
-        //         $"Курс: {Course}\n" +
-        //         $"Дата рождения: {BirthDate}\n" +
-        //         $"Технологии: {technologies}";
-
         var student = new Student
         {
             Id = Students.Any() ? Students.Max(x => x.Id) + 1 : 1,
