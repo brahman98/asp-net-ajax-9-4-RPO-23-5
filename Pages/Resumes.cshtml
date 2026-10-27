@@ -14,6 +14,29 @@
         <a class="home-button" asp-page="/CreateResume">Создать резюме</a>
     </div>
 
+    <form method="get" class="resume-search-form">
+        <div class="search-field">
+            <label for="search">Имя кандидата</label>
+            <input type="text" id="search" name="search" value="@Model.Search" placeholder="Например, Александр" />
+        </div>
+
+        <div class="search-field">
+            <label for="specialityFilter">Специальность</label>
+            <select name="specialityFilter" id="specialityFilter">
+                <option value="">Все специальности</option>
+                @foreach (var speciality in Model.Specialities)
+                {
+                    <option value="@speciality" selected="@(Model.SpecialityFilter == speciality)"> @speciality </option>
+                }
+            </select>
+        </div>
+
+        <div class="search-actions">
+            <button type="submit" class="home-button">Найти резюме</button>
+            <a asp-page="/Resumes" class="search-reset">Сбросить</a>
+        </div>
+    </form>
+
     <p class="resumes-count">
         Всего резюме: @Model.Students.Count
     </p>
@@ -51,13 +74,11 @@
                         </p>
                         <p>
                             <strong>Технологии:</strong>
-                            @(student.Technologies.Length > 0 
+                            @(student.Technologies.Length > 0
                             ? string.Join(", ", student.Technologies) : "Не указаны")
                         </p>
                     </div>
-                    <a class="resume-dettails-button"
-                        asp-page="/Resume"
-                        asp-route-id="@student.Id">
+                    <a class="resume-details-button" asp-page="/Resume" asp-route-id="@student.Id">
                         Подробнее
                     </a>
                 </article>
